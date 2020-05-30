@@ -14,7 +14,7 @@ import WelcomeScreen2 from './WelcomeScreen2'
 import WelcomeScreen3 from './WelcomeScreen3'
 import WelcomeScreen4 from './WelcomeScreen4'
 import CustomIcon from '../components/CustomIcon'
-import { MultiBarButton } from 'react-native-multibar';
+import { MultiBarButton, MultiBarProvider } from 'react-native-multibar';
 import Icons from 'react-native-vector-icons/FontAwesome'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import PlusIcon from 'react-native-vector-icons/Entypo'
@@ -22,7 +22,7 @@ import PlusIcon from 'react-native-vector-icons/Entypo'
 export default function BottomStackScreen() {
   const Tab = createBottomTabNavigator();
   return (
-
+    <MultiBarProvider>
     <Tab.Navigator
       initialRouteName="WelcomeScreen1"
       tabBarOptions={{
@@ -62,14 +62,19 @@ export default function BottomStackScreen() {
         name="Center"
         component={WelcomeScreen3}
         options={{
+          tabBarLabel: '',
           tabBarButton: () => (
             <MultiBarButton
+            style = {{
+              backgroundColor : "#ffffff"
+            }}
             >
               <PlusIcon
                 name = "plus"
-                
-                size = {50}
-                color = "#4dbbfa"
+                style={{
+                  fontSize: 55,
+                  color: '#4dbbfa'
+                }}
               />
             </MultiBarButton>
           )
@@ -102,6 +107,6 @@ export default function BottomStackScreen() {
         }}
       />
     </Tab.Navigator>
-
+    </MultiBarProvider>
   );
 }
