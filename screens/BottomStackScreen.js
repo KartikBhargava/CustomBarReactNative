@@ -1,11 +1,23 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  Image
+} from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import WelcomeScreen1 from './WelcomeScreen1'
 import WelcomeScreen2 from './WelcomeScreen2'
 import WelcomeScreen3 from './WelcomeScreen3'
 import WelcomeScreen4 from './WelcomeScreen4'
 import CustomIcon from '../components/CustomIcon'
+import { MultiBarButton } from 'react-native-multibar';
+import Icons from 'react-native-vector-icons/FontAwesome'
+import Icon from 'react-native-vector-icons/MaterialIcons'
+import PlusIcon from 'react-native-vector-icons/Entypo'
 
 export default function BottomStackScreen() {
   const Tab = createBottomTabNavigator();
@@ -14,16 +26,21 @@ export default function BottomStackScreen() {
     <Tab.Navigator
       initialRouteName="WelcomeScreen1"
       tabBarOptions={{
-        activeTintColor: '#e91e63',
+        activeTintColor: '#096482',
+        inactiveTintColor: '#8a919c',
+        style:{height : 60}
       }}
+     
     >
       <Tab.Screen
         name="Home"
         component={WelcomeScreen1}
         options={{
-          tabBarIcon: () => (
-            <CustomIcon
-              name="chat"
+          tabBarIcon: (size, color) => (
+            <Icons
+            name = "home"
+            size = {38}
+            color = "#4dbbfa"
             />
           )
         }}
@@ -33,10 +50,11 @@ export default function BottomStackScreen() {
         component={WelcomeScreen2}
         options={{
           tabBarIcon: () => (
-            <CustomIcon
-              name="alarm"
-
-            />
+           <Icon
+           name= "sms"
+           size = {38}
+           color = "#4dbbfa"
+           />
           )
         }}
       />
@@ -44,12 +62,16 @@ export default function BottomStackScreen() {
         name="Center"
         component={WelcomeScreen3}
         options={{
-          tabBarIcon: () => (
-            <CustomIcon
-              name="chat"
-
-
-            />
+          tabBarButton: () => (
+            <MultiBarButton
+            >
+              <PlusIcon
+                name = "plus"
+                
+                size = {50}
+                color = "#4dbbfa"
+              />
+            </MultiBarButton>
           )
         }}
       />
@@ -58,8 +80,10 @@ export default function BottomStackScreen() {
         component={WelcomeScreen4}
         options={{
           tabBarIcon: () => (
-            <CustomIcon
-              name="health"
+            <Icon
+            name = "notifications"
+            size = {38}
+            color = "#4dbbfa"
             />
           )
         }}
@@ -69,10 +93,11 @@ export default function BottomStackScreen() {
         component={WelcomeScreen1}
         options={{
           tabBarIcon: () => (
-            <CustomIcon
-              name="alarm"
-
-            />
+            <Icon
+            name = "pets"
+            size = {38}
+            color = "#4dbbfa"
+          />
           )
         }}
       />
@@ -80,4 +105,10 @@ export default function BottomStackScreen() {
 
   );
 }
+const styles = StyleSheet.create({
+  bottomBarBackground: {
+    
+  }
+}
 
+)
