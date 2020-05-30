@@ -105,10 +105,3 @@ export default function BottomStackScreen() {
 
   );
 }
-const styles = StyleSheet.create({
-  bottomBarBackground: {
-    
-  }
-}
-
-)
