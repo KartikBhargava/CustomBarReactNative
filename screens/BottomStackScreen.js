@@ -1,11 +1,21 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  Image
+} from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import WelcomeScreen1 from './WelcomeScreen1'
 import WelcomeScreen2 from './WelcomeScreen2'
 import WelcomeScreen3 from './WelcomeScreen3'
 import WelcomeScreen4 from './WelcomeScreen4'
 import CustomIcon from '../components/CustomIcon'
+import images from '../assets/icons'
+import { MultiBarButton } from 'react-native-multibar';
 
 export default function BottomStackScreen() {
   const Tab = createBottomTabNavigator();
@@ -22,8 +32,8 @@ export default function BottomStackScreen() {
         component={WelcomeScreen1}
         options={{
           tabBarIcon: () => (
-            <CustomIcon
-              name="chat"
+            <Image
+              source={images.homeIcon}
             />
           )
         }}
@@ -33,8 +43,8 @@ export default function BottomStackScreen() {
         component={WelcomeScreen2}
         options={{
           tabBarIcon: () => (
-            <CustomIcon
-              name="alarm"
+            <Image
+              source={images.groupIcon}
 
             />
           )
@@ -44,12 +54,18 @@ export default function BottomStackScreen() {
         name="Center"
         component={WelcomeScreen3}
         options={{
-          tabBarIcon: () => (
-            <CustomIcon
-              name="chat"
-
-
-            />
+          tabBarButton: () => (
+            <MultiBarButton
+            style = {{
+              backgroundColor: '#ffffff',
+              with: 65,
+              height : 55
+            }}
+            >
+              <Image
+                source={images.healthIcon}
+              />
+            </MultiBarButton>
           )
         }}
       />
@@ -58,9 +74,9 @@ export default function BottomStackScreen() {
         component={WelcomeScreen4}
         options={{
           tabBarIcon: () => (
-            <CustomIcon
-              name="health"
-            />
+            <Image
+            source={images.alarmIcon}
+          />
           )
         }}
       />
@@ -69,10 +85,9 @@ export default function BottomStackScreen() {
         component={WelcomeScreen1}
         options={{
           tabBarIcon: () => (
-            <CustomIcon
-              name="alarm"
-
-            />
+            <Image
+            source={images.randomIcon}
+          />
           )
         }}
       />
@@ -80,4 +95,10 @@ export default function BottomStackScreen() {
 
   );
 }
+const styles = StyleSheet.create({
+  bottomBarBackground: {
+    
+  }
+}
 
+)
