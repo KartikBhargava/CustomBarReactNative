@@ -24,7 +24,7 @@ export default function BottomStackScreen() {
     <Tab.Navigator
       initialRouteName="WelcomeScreen1"
       tabBarOptions={{
-        activeTintColor: '#e91e63',
+        activeTintColor: '#096482',
       }}
     >
       <Tab.Screen
@@ -54,18 +54,30 @@ export default function BottomStackScreen() {
         name="Center"
         component={WelcomeScreen3}
         options={{
-          tabBarButton: () => (
-            <MultiBarButton
+          tabBarIcon: () => (
+            <View
             style = {{
-              backgroundColor: '#ffffff',
-              with: 65,
-              height : 55
+              position: 'absolute',
+              bottom: 20, // space from bottombar
+              height: 58,
+              width: 58,
+              borderRadius: 58,
+              backgroundColor: '#5a95ff',
+              justifyContent: 'center',
+              alignItems: 'center',
             }}
             >
               <Image
                 source={images.healthIcon}
+                style = {{
+                  width: 40,
+            height: 40,
+            tintColor: '#f1f6f9',
+            alignContent: 'center',
+ 
+                }}
               />
-            </MultiBarButton>
+            </View>
           )
         }}
       />
